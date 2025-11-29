@@ -1,5 +1,5 @@
 fastapi
-uvicorn
+uvicorn[standard]
 gunicorn
 pydantic
 langchain==0.0.354
@@ -12,5 +12,3 @@ sentence-transformers
 torch
 PyPDF2
 dotenv
-
-
