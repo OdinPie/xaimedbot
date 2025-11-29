@@ -5,7 +5,7 @@ and exposes it as a chat-style API for the clinical web interface.
 
 from __future__ import annotations
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 import os
 import json
 import re
@@ -567,15 +567,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-STATIC_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")
-FRONTEND_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 def serve_index():
-  index_path = os.path.join(FRONTEND_DIR, "index.html")
-  return FileResponse(index_path)
+    return FileResponse(os.path.join(BASE_DIR, "index.html"))
+
+@app.get("/styles.css")
+def serve_css():
+    return FileResponse(
+        os.path.join(BASE_DIR, "styles.css"),
+        media_type="text/css"
+    )
+
+@app.get("/app.js")
+def serve_js():
+    return FileResponse(
+        os.path.join(BASE_DIR, "app.js"),
+        media_type="application/javascript"
+    )
 
 
 @app.post("/api/session", response_model=CreateSessionResponse)
