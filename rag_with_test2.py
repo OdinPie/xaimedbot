@@ -19,9 +19,9 @@ import pandas as pd
 import numpy as np
 import torch
 from sentence_transformers import util
-
+from dotenv import load_dotenv
 SYSTEM_READY = False
-
+load_dotenv()
 def visualize_disease_symptom_attribution(symptom_tracker, df_grouped, embedding_model):
     """
     Create a disease–symptom heatmap showing how much each user symptom
@@ -70,10 +70,6 @@ def visualize_disease_symptom_attribution(symptom_tracker, df_grouped, embedding
         index=user_symptoms,
         columns=top_diseases
     )
-
-    
-
-
 
 # --- Step 1: Enhanced PDF Data Extraction and Processing ---
 def extract_pdf_content(pdf_path):
