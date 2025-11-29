@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinical Diagnostic Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="global-loader" class="global-loader">
+    <div class="loader-spinner"></div>
+    <p>Booting clinical reasoning stack…</p>
+  </div>
+  <div class="aura"></div>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="label">Medical Insights Lab</p>
+        <h1>Clinical Diagnostic Companion</h1>
+        <p class="subtitle">
+          A diagnostic conversation engine that extracts key clinical features from your symptoms and reveals its reasoning through matched-symptom scoring.
+It uses doctor-like follow-up questioning and a two-stage process consisting of symptom evaluation followed by test-based verification to converge on the most plausible explanations.
+        </p>
+        
+        
+        
+      </div>
+      <div class="hero-metrics">
+        <div class="scope-card" aria-label="Scope of diagnosis">
+          <div class="scope-pill">
+            <span class="scope-dot"></span>
+            Scope of this assistant
+          </div>
+          <h2 class="scope-title">Optimized for 14 common conditions</h2>
+          <p class="scope-helper">
+            This tool only reasons within the following diseases and related symptoms:
+          </p>
+          <div class="scope-tags">
+            <span class="scope-tag">Malaria</span>
+            <span class="scope-tag">Tuberculosis</span>
+            <span class="scope-tag">Dengue Fever</span>
+            <span class="scope-tag">Hepatitis B</span>
+            <span class="scope-tag">Asthma</span>
+            <span class="scope-tag">GERD</span>
+            <span class="scope-tag">Irritable Bowel Syndrome (IBS)</span>
+            <span class="scope-tag">Iron-Deficiency Anemia</span>
+            <span class="scope-tag">Acute Diarrheal Illness</span>
+            <span class="scope-tag">Depression</span>
+            <span class="scope-tag">Anxiety Disorders</span>
+            <span class="scope-tag">Viral Fever</span>
+            <span class="scope-tag">Covid-19</span>
+            <span class="scope-tag">Migraine</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="chat-panel">
+        <div id="chat-log" class="chat-log" aria-live="polite"></div>
+
+        <div class="status-dock">
+          <div class="status-chip">
+            <span class="dot"></span>
+            <span id="status-label">Initializing consultation…</span>
+          </div>
+          <div class="status-actions">
+            <div id="quick-answers" class="quick-answers hidden" aria-label="Quick replies">
+              <button id="quick-yes" type="button">Yes</button>
+              <button id="quick-no" type="button">No</button>
+            </div>
+            <button id="reset-btn" type="button">Start New Session</button>
+          </div>
+        </div>
+
+        <form id="chat-form" class="chat-form">
+          <div class="input-wrapper">
+            <textarea id="chat-input" rows="2" placeholder="Describe how you feel today…"></textarea>
+            <div id="input-loader" class="textarea-loader"></div>
+          </div>
+          <button id="send-btn" type="submit">Send</button>
+        </form>
+      </section>
+
+      <aside class="insights-panel">
+        <div class="card">
+          <h2>Top Considerations</h2>
+          <ul id="conditions-list" class="conditions"></ul>
+        </div>
+
+        <div class="card">
+          <h2>Session Notes</h2>
+          <div id="session-notes" class="notes">
+            Share your symptoms to see personalized reasoning and
+            medical justification for every question.
+          </div>
+        </div>
+
+      </aside>
+    </main>
+
+    <footer class="app-footer">
+      <div class="card disclaimer">
+        <h2>Safety Notice</h2>
+        <p>
+          This assistant is a research prototype and not a substitute for medical care.
+          Always consult licensed clinicians before making health decisions.
+        </p>
+      </div>
+      <p class="copyright">
+        © 2025
+        <a href="https://www.linkedin.com/in/maliha-tabassum-801241210/" target="_blank" rel="noopener noreferrer">
+          Maliha Tabassum
+        </a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Final assessment modal -->
+  <div id="final-summary-modal" class="final-modal hidden" aria-hidden="true">
+    <div class="final-modal-backdrop"></div>
+    <div class="final-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="final-summary-title">
+      <div class="final-modal-card">
+        <h2 id="final-summary-title">Final Assessment</h2>
+        <p id="final-summary-content"></p>
+        <button id="final-close-btn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js" type="module"></script>
+</body>
+
+</html>
+
